@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CatalogSchema.xsd ">
+    <effectiveDate>2021-04-14T10:00:00+00:00</effectiveDate>
+    <catalogName>doubleSlash Vignette Service</catalogName>
+
+    <recurringBillingMode>IN_ARREAR</recurringBillingMode>
+
+    <currencies>
+        <currency>EUR</currency>
+    </currencies>
+
+    <!-- Flex -->
+    <units>
+        <unit name="vignette-at"/>
+        <unit name="vignette-ch"/>
+    </units>
+
+    <products>
+        <!-- Family -->
+        <product name="Family">
+            <category>BASE</category>
+            <available>
+                <addonProduct>VignetteAT</addonProduct>
+                <addonProduct>VignetteCH</addonProduct>
+            </available>
+        </product>
+        <product name="VignetteAT">
+            <category>ADD_ON</category>
+        </product>
+        <product name="VignetteCH">
+            <category>ADD_ON</category>
+        </product>
+
+        <!-- Flex -->
+        <product name="Flex">
+            <category>BASE</category>
+        </product>
+    </products>
+
+    <rules>
+        <changePolicy>
+            <changePolicyCase>
+                <policy>END_OF_TERM</policy>
+            </changePolicyCase>
+        </changePolicy>
+        <cancelPolicy>
+            <cancelPolicyCase>
+                <policy>END_OF_TERM</policy>
+            </cancelPolicyCase>
+        </cancelPolicy>
+    </rules>
+
+    <plans>
+        <!-- Family -->
+        <plan name="family-monthly">
+            <product>Family</product>
+            <finalPhase type="EVERGREEN">
+                <duration>
+                    <unit>UNLIMITED</unit>
+                </duration>
+                <recurring>
+                    <billingPeriod>MONTHLY</billingPeriod>
+                    <recurringPrice>
+                        <price>
+                            <currency>EUR</currency>
+                            <value>10.00</value>
+                        </price>
+                    </recurringPrice>
+                </recurring>
+            </finalPhase>
+        </plan>
+        <plan name="family-vignette-at">
+            <product>VignetteAT</product>
+            <initialPhases>
+            </initialPhases>
+            <finalPhase type="FIXEDTERM">
+                <duration>
+                    <unit>MONTHS</unit>
+                    <number>2</number>
+                </duration>
+                <fixed>
+                    <fixedPrice>
+                        <price>
+                            <currency>EUR</currency>
+                            <value>28.70</value>
+                        </price>
+                    </fixedPrice>
+                </fixed>
+            </finalPhase>
+        </plan>
+        <plan name="family-vignette-ch">
+            <product>VignetteCH</product>
+            <initialPhases>
+            </initialPhases>
+            <finalPhase type="FIXEDTERM">
+                <duration>
+                    <unit>YEARS</unit>
+                    <number>1</number>
+                </duration>
+                <fixed>
+                    <fixedPrice>
+                        <price>
+                            <currency>EUR</currency>
+                            <value>38.50</value>
+                        </price>
+                    </fixedPrice>
+                </fixed>
+            </finalPhase>
+        </plan>
+
+        <!-- Flex -->
+        <plan name="flex-monthly">
+            <product>Flex</product>
+            <finalPhase type="EVERGREEN">
+                <duration>
+                    <unit>UNLIMITED</unit>
+                </duration>
+                <recurring>
+                    <billingPeriod>MONTHLY</billingPeriod>
+                    <recurringPrice>
+                        <price>
+                            <currency>EUR</currency>
+                            <value>20.00</value>
+                        </price>
+                    </recurringPrice>
+                </recurring>
+                <usages>
+                    <usage name="flex-monthly-at" billingMode="IN_ARREAR" usageType="CONSUMABLE">
+                        <billingPeriod>MONTHLY</billingPeriod>
+                        <tiers>
+                            <tier>
+                                <blocks>
+                                    <tieredBlock>
+                                        <unit>vignette-at</unit>
+                                        <size>1</size>
+                                        <prices>
+                                            <price>
+                                                <currency>EUR</currency>
+                                                <value>1.5</value>
+                                            </price>
+                                        </prices>
+                                        <max>-1</max>
+                                    </tieredBlock>
+                                </blocks>
+                            </tier>
+                        </tiers>
+                    </usage>
+                    <usage name="flex-monthly-ch" billingMode="IN_ARREAR" usageType="CONSUMABLE">
+                        <billingPeriod>MONTHLY</billingPeriod>
+                        <tiers>
+                            <tier>
+                                <blocks>
+                                    <tieredBlock>
+                                        <unit>vignette-ch</unit>
+                                        <size>1</size>
+                                        <prices>
+                                            <price>
+                                                <currency>EUR</currency>
+                                                <value>1.5</value>
+                                            </price>
+                                        </prices>
+                                        <max>-1</max>
+                                    </tieredBlock>
+                                </blocks>
+                            </tier>
+                        </tiers>
+                    </usage>
+                </usages>
+            </finalPhase>
+        </plan>
+    </plans>
+    <priceLists>
+        <defaultPriceList name="DEFAULT">
+            <plans>
+                <plan>family-monthly</plan>
+                <plan>family-vignette-at</plan>
+                <plan>family-vignette-ch</plan>
+                <plan>flex-monthly</plan>
+            </plans>
+        </defaultPriceList>
+    </priceLists>
+</catalog>
